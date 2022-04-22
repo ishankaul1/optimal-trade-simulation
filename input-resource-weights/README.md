@@ -1,0 +1,6 @@
+#Test Resource Weights
+Test files that include the 'weighting' of each resource. These weights can be thought of a 'value per unit', with respect to some common currency across nations, that each resource is given when trading.
+The weights should be a 'simplified' version of the country utility function if we were to represent it as a weighted sum. However, the utility function will be more complex based on real-world logic.
+Some rules w.r.t the weights:
+    1) Any 'waste' resource must be given a 'negative' value. They can still be traded, as we can consider that another country could get rid of some waste for us in exchange for some favors.
+    2) Any resource that cannot be traded in a game world will be given a weight of 'x'. For some resources, that will be up to the 'game world' (eg - test case) creator (ex- can we really trade farms? Not really unless we literally give up the land, but we can definitely trade their products, so this is arguable). However, I will always keep Population as a non-tradeable, because the possibility of a slave trade in my game world does not sit well with me.

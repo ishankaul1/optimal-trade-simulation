@@ -1,0 +1,4 @@
+Country, AvailableLand, Water, Population, PopulationWaste, MetallicElements, Timber, Farm, FarmWaste, MetallicAlloys, MetallicAlloysWaste, Electronics, ElectronicsWaste ,Housing, HousingWaste, Food, FoodWaste, PotentialFossilEnergy, PotentialFossilEnergyUsable, PotentialFossilEnergyUsableWaste, PotentialRenewableEnergy, PotentialRenewableEnergyUsable, PotentialRenewableEnergyUsableWaste
+X1 , 2, 3000, 25, 12, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 1000, 5, 0, 1000, 5, 0
+X2 , 100, 100, 20, 0, 100, 100, 100, 0, 100, 0, 100, 0, 100, 0, 100, 0, 100, 100, 10, 100, 100, 10
+X3 , 120, 10, 30, 10, 50, 50, 200, 100, 100, 50, 40, 20, 30, 10, 40, 10, 10, 10, 10, 10, 10, 10

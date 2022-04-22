@@ -1,0 +1,122 @@
+{
+  "transforms": [
+    {
+      "description": "Build Housing",
+      "inputs": {
+        "Population": 5,
+        "MetallicElements": 1,
+        "Timber": 5,
+        "MetallicAlloys": 3
+      },
+      "outputs": {
+        "Housing": 1,
+        "HousingWaste": 1,
+        "Population": 5
+      }
+    },
+    {
+      "description": "Manufacture Alloys",
+      "inputs": {
+        "Population": 1,
+        "MetallicElements": 2
+      },
+      "outputs": {
+        "Population": 1,
+        "MetallicAlloys": 1,
+        "MetallicAlloysWaste": 1
+      }
+    },
+    {
+      "description": "Manufacture Electronics",
+      "inputs": {
+        "Population": 1,
+        "MetallicElements": 3,
+        "MetallicAlloys": 2
+      },
+      "outputs": {
+        "Population": 1,
+        "Electronics": 2,
+        "ElectronicsWaste": 1
+      }
+    },
+    {
+      "description": "Produce Food",
+      "inputs": {
+        "Population": 1,
+        "Farm": 1,
+        "Water": 1
+      },
+      "outputs": {
+        "Population": 1,
+        "Farm": 1,
+        "Food": 3
+      }
+    },
+    {
+      "description": "Build Farm",
+      "inputs": {
+        "AvailableLand": 1,
+        "Population": 1
+      },
+      "outputs": {
+        "Population": 1,
+        "Farm": 1
+      }
+    },
+    {
+      "description": "Process Fossil Fuels",
+      "inputs": {
+        "Population": 1,
+        "PotentialFossilEnergy": 1,
+        "Electronics": 1
+      },
+      "outputs": {
+        "Population": 1,
+        "PotentialFossilEnergyUsable": 1,
+        "Electronics": 1,
+        "PotentialFossilEnergyUsableWaste": 1
+      }
+    },
+    {
+      "description": "Create Renewable Energy Source",
+      "inputs": {
+        "Population": 1,
+        "PotentialRenewableEnergy": 1,
+        "Electronics": 2
+      },
+      "outputs": {
+        "Population": 1,
+        "PotentialRenewableEnergyUsable": 1,
+        "Electronics": 2,
+        "PotentialFossilEnergyUsableWaste": 1
+      }
+    },
+    {
+      "description": "Treat Water Using Fossil Energy",
+      "inputs": {
+        "Population": 1,
+        "PotentialFossilEnergyUsable": 1,
+        "Electronics": 1
+      },
+      "outputs": {
+        "Population": 1,
+        "Electronics": 1,
+        "PotentialFossilEnergyUsableWaste": 1,
+        "Water": 3
+      }
+    },
+    {
+      "description": "Treat Water Using Renewable Energy",
+      "inputs": {
+        "Population": 1,
+        "PotentialRenewableEnergyUsable": 1,
+        "Electronics": 2
+      },
+      "outputs": {
+        "Population": 1,
+        "Electronics": 1,
+        "Water": 3
+      }
+    }
+  ]
+}

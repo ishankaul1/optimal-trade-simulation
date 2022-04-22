@@ -1,0 +1,2 @@
+AvailableLand, Water, Population, PopulationWaste, MetallicElements, Timber, Farm, FarmWaste, MetallicAlloys, MetallicAlloysWaste, Electronics, ElectronicsWaste ,Housing, HousingWaste, Food, FoodWaste, PotentialFossilEnergy, PotentialFossilEnergyUsable, PotentialFossilEnergyUsableWaste, PotentialRenewableEnergy, PotentialRenewableEnergyUsable, PotentialRenewableEnergyUsableWaste
+8, 3, 0, -5, 2, 3, 4, -3, 5, -6, 8, -7, 10, -4, 3, -1, 2, 5, -5, 3, 6, -3
