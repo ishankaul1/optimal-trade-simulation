@@ -1,8 +1,13 @@
+import math
+
 import actions
 import state
+import random
 
 from depq import DEPQ
 
+#Constant for now
+RECIPROCAL_OF_BESTFRONTIER_SIZE_RATIO = 3
 class Schedule_Optimizer:
     #requirements: init_state, actionable_transforms, actionable_transfers, state_quality_func, my_country, max_depth, max_frontier, num_outputs
     def __init__(self, init_state: dict, actionable_transforms: list[actions.ActionableTransform], actionable_transfers: list[actions.ActionableTransfer], state_quality_fn, my_country: str, max_depth: int, max_frontier: int, num_outputs: int, depth_penalty: float, likelihood_param: float, cost_of_failure: int ):
@@ -19,8 +24,50 @@ class Schedule_Optimizer:
         #stuff needed to start optimizing
         init_statenode = state.StateNode(state=init_state, schedule=[], schedule_likelihood=1, expected_utility=0)
         self.best_states = DEPQ(maxlen=num_outputs)
-        self.frontier = DEPQ(maxlen=max_frontier)
-        self.frontier.insert(init_statenode, init_statenode.expected_utility)
+
+        #TODO: split into 2 frontiers; one DEPQ length 1/3 frontier size, one array length 2/3. Pop from either with probability
+        #   proportional to size. We add to good frontier if FULL only if better than worst, BUT if worse frontier is full, add to it with
+        #   probability 1/size. We will also RANDOMLY choose which index of the worse frontier we will replace (randint 0-size)
+
+        self.best_frontier_size = math.floor(max_frontier / RECIPROCAL_OF_BESTFRONTIER_SIZE_RATIO)
+        self.randomized_frontier_size = max_frontier - self.best_frontier_size
+
+        self.best_frontier = DEPQ(maxlen=max_frontier)
+        self.best_frontier.insert(init_statenode, init_statenode.expected_utility)
+        self.randomized_frontier = []
+
+    def isBestFrontierFull(self) -> bool:
+        return len(self.best_frontier) > self.best_frontier_size
+
+    def isRandomizedFrontierFull(self) -> bool:
+        return len(self.randomized_frontier) > self.randomized_frontier_size
+
+    def bothFrontiersEmpty(self):
+        return len(self.randomized_frontier) == 0 and len(self.best_frontier) == 0
+
+    def isRandomizedFrontierEmpty(self):
+        return len(self.randomized_frontier) == 0
+
+    def isBestFrontierEmpty(self):
+        return len(self.best_frontier) == 0
+
+    def randomlyPopFromOneOfTheFrontiers(self):
+        if self.bothFrontiersEmpty():
+            return None
+        elif self.isRandomizedFrontierEmpty():
+            self.best_frontier.popfirst()
+        elif self.isBestFrontierEmpty():
+            return self.randomized_frontier_size.pop()
+        rint = random.randint(1, RECIPROCAL_OF_BESTFRONTIER_SIZE_RATIO)
+        if rint == 1:
+            return self.best_frontier.popfirst()
+        else:
+            return self.randomized_frontier_size.pop()
+
+    def insertNewState(self, newState: state.StateNode):
+        #TODO: We add to good frontier if FULL only if better than worst. If not full, just add it? BUT if worse frontier is full, add to it with
+        #   probability 1/size. We will also RANDOMLY choose which index of the worse frontier we will replace (randint 0-size)
+        pass
 
     def findschedules(self) -> list: #list of schedules & utilities; i never made a data type for it (hehe)
         while len(self.frontier) > 0:
