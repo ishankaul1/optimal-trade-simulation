@@ -35,6 +35,7 @@ class Schedule_Optimizer:
 
         self.best_frontier = DEPQ(maxlen=max_frontier)
         self.best_frontier.insert(init_statenode, init_statenode.expected_utility)
+        print(len(self.best_frontier))
         self.randomized_frontier = deque([])
 
     def isBestFrontierFull(self) -> bool:
@@ -56,31 +57,39 @@ class Schedule_Optimizer:
         if self.bothFrontiersEmpty():
             return None
         elif self.isRandomizedFrontierEmpty():
-            self.best_frontier.popfirst()
+            return self.best_frontier.popfirst()[0]
         elif self.isBestFrontierEmpty():
             return self.randomized_frontier.pop()
+        print('Pop:')
+        print('Randomized Size: ' + str(len(self.randomized_frontier)) + ', Best size: ' + str(len(self.best_frontier)))
         rint = random.randint(1, RECIPROCAL_OF_BESTFRONTIER_SIZE_RATIO)
         if rint == 1:
-            return self.best_frontier.popfirst()
+            return self.best_frontier.popfirst()[0]
         else:
             return self.randomized_frontier.pop()
 
     #Called when both frontiers are full, and the node doesn't belong in the best frontier
-    def performRandomizedInsert(self, newState: state.StateNode):
+    def performRandomizedInsert(self, newState: state.StateNode, canBeDeleted: bool):
         #step 1: decide if we're even going to put this node in.
         # TODO: experiment with the probability function of whether we choose to add this node
         randomFactor = random.randint(1, self.max_frontier)
         if randomFactor == 1:
             self.insertIntoRandomIndex(newState)
-        else:
+        elif canBeDeleted:
             del newState
 
     def insertIntoRandomIndex(self, newState: state.StateNode):
         randomIndex = random.randint(0, self.randomized_frontier_size-1)
         self.randomized_frontier[randomIndex] = newState
 
+    def tryInsertToBestStates(self, newState: state.StateNode)-> bool:
+        if not self.isBestFrontierFull() or newState.expected_utility > self.best_states.low():
+            self.best_states.insert(newState, newState.expected_utility)
+            return True
+        return False
 
-    def tryInsertStateToFrontiers(self, newState: state.StateNode):
+
+    def tryInsertStateToFrontiers(self, newState: state.StateNode, canBeDeleted: bool):
         #TODO: We add to good frontier if FULL only if better than worst. If not full, just add it? BUT if worse frontier is full, add to it with
         #   probability 1/size. We will also RANDOMLY choose which index of the worse frontier we will replace (randint 0-size)
         #Step 1: if good frontier not full, just add
@@ -94,28 +103,30 @@ class Schedule_Optimizer:
                 self.best_frontier.insert(newState, newState.expected_utility)
             else:
                 #try inserting into randomized frontier
-                self.performRandomizedInsert(newState)
+                self.performRandomizedInsert(newState, canBeDeleted)
 
     def findschedules(self) -> list: #list of schedules & utilities; i never made a data type for it (hehe)
-        while not (self.isBestFrontierEmpty() and self.isRandomizedFrontierEmpty()):
-            curStateNode = self.randomlyPopFromOneOfTheFrontiers()
-            if curStateNode is None:
+        while not (self.bothFrontiersEmpty()):
+            newState = self.randomlyPopFromOneOfTheFrontiers()
+            if newState is None:
                 print('Should not reach here; why is it none?')
                 break
-            self.generatesuccessors(curStateNode)
+            #if we insert into best states, should not hard-delete the node
+            canBeDeleted = not self.tryInsertToBestStates(newState)
+            self.generatesuccessors(newState, canBeDeleted)
 
         #loop done; convert best_output states into schedules
         return self.extractschedulesfrombeststates()
 
-    def generatesuccessors(self, statenode: state.StateNode):
+    def generatesuccessors(self, statenode: state.StateNode, canBeDeleted: bool):
         #don't generate at depth level
         if len(statenode.schedule) >= self.max_depth:
             return
-        self.generatesuccessorsfromlistofactions(statenode=statenode, actions=self.actionable_transforms)
-        self.generatesuccessorsfromlistofactions(statenode=statenode, actions=self.actionable_transfers)
+        self.generatesuccessorsfromlistofactions(statenode=statenode, actions=self.actionable_transforms, canBeDeleted=canBeDeleted)
+        self.generatesuccessorsfromlistofactions(statenode=statenode, actions=self.actionable_transfers, canBeDeleted=canBeDeleted)
 
     #TODO: IMPLEMENT WITH UPDATED FRONTIERS AND INSERT (tryInsertStateToFrontiers) FUNCTIONS; SHOULD BE STRAIGHTFORWARD
-    def generatesuccessorsfromlistofactions(self, statenode: state.StateNode, actions: list[actions.Action]):
+    def generatesuccessorsfromlistofactions(self, statenode: state.StateNode, actions: list[actions.Action], canBeDeleted: bool):
         for action in actions:
             scalar = 1
             while self.state_generator.isvalidactionforstate(action=action, statenode=statenode, scalar=scalar):
@@ -127,20 +138,9 @@ class Schedule_Optimizer:
                 # print(len(newstate.schedule))
                 # print(newstate.expected_utility)
 
-                deleteGeneratedState = True
+                #deleteGeneratedState = True
                 if len(newstate.schedule) <= self.max_depth:
-                    #totally disregard if not less than the max depth. we shouldn't even hit this case really
-                    if len(self.frontier) < self.max_frontier or (newstate.expected_utility > self.frontier.low()):
-                        #if frontier not yet full or the new state is better than the worst of the frontier, insert in frontier and dont delete from mem
-                        #can mess with this logic to expand search space - may need to shy away from usage of the depq
-                        self.frontier.insert(newstate, newstate.expected_utility)
-                        deleteGeneratedState = False
-                    if len(self.best_states) < self.num_outputs or newstate.expected_utility > self.best_states.low():
-                        #don't add to output states unless better than worst output state
-                        self.best_states.insert(newstate, newstate.expected_utility)
-                        deleteGeneratedState = False
-                if deleteGeneratedState:
-                    del newstate #lol memory management in Python :P
+                    self.tryInsertStateToFrontiers(newState=newstate, canBeDeleted=canBeDeleted)
                 scalar = scalar + 1
 
 
