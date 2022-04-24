@@ -5,6 +5,7 @@ import state
 import random
 
 from depq import DEPQ
+from collections import deque
 
 #Constant for now
 RECIPROCAL_OF_BESTFRONTIER_SIZE_RATIO = 3
@@ -34,7 +35,7 @@ class Schedule_Optimizer:
 
         self.best_frontier = DEPQ(maxlen=max_frontier)
         self.best_frontier.insert(init_statenode, init_statenode.expected_utility)
-        self.randomized_frontier = []
+        self.randomized_frontier = deque([])
 
     def isBestFrontierFull(self) -> bool:
         return len(self.best_frontier) > self.best_frontier_size
@@ -57,22 +58,51 @@ class Schedule_Optimizer:
         elif self.isRandomizedFrontierEmpty():
             self.best_frontier.popfirst()
         elif self.isBestFrontierEmpty():
-            return self.randomized_frontier_size.pop()
+            return self.randomized_frontier.pop()
         rint = random.randint(1, RECIPROCAL_OF_BESTFRONTIER_SIZE_RATIO)
         if rint == 1:
             return self.best_frontier.popfirst()
         else:
-            return self.randomized_frontier_size.pop()
+            return self.randomized_frontier.pop()
 
-    def insertNewState(self, newState: state.StateNode):
+    #Called when both frontiers are full, and the node doesn't belong in the best frontier
+    def performRandomizedInsert(self, newState: state.StateNode):
+        #step 1: decide if we're even going to put this node in.
+        # TODO: experiment with the probability function of whether we choose to add this node
+        randomFactor = random.randint(1, self.max_frontier)
+        if randomFactor == 1:
+            self.insertIntoRandomIndex(newState)
+        else:
+            del newState
+
+    def insertIntoRandomIndex(self, newState: state.StateNode):
+        randomIndex = random.randint(0, self.randomized_frontier_size-1)
+        self.randomized_frontier[randomIndex] = newState
+
+
+    def tryInsertStateToFrontiers(self, newState: state.StateNode):
         #TODO: We add to good frontier if FULL only if better than worst. If not full, just add it? BUT if worse frontier is full, add to it with
         #   probability 1/size. We will also RANDOMLY choose which index of the worse frontier we will replace (randint 0-size)
-        pass
+        #Step 1: if good frontier not full, just add
+        if not self.isBestFrontierFull():
+            self.best_frontier.insert(newState, newState.expected_utility)
+        elif not self.isRandomizedFrontierFull():
+            self.randomized_frontier.appendleft(newState)
+        else:
+            #both are full. Now check if we need to replace anything in best frontier
+            if newState.expected_utility > self.best_frontier.low():
+                self.best_frontier.insert(newState, newState.expected_utility)
+            else:
+                #try inserting into randomized frontier
+                self.performRandomizedInsert(newState)
 
     def findschedules(self) -> list: #list of schedules & utilities; i never made a data type for it (hehe)
-        while len(self.frontier) > 0:
-            curstatenode = self.frontier.popfirst()[0]
-            self.generatesuccessors(curstatenode) #implement
+        while not (self.isBestFrontierEmpty() and self.isRandomizedFrontierEmpty()):
+            curStateNode = self.randomlyPopFromOneOfTheFrontiers()
+            if curStateNode is None:
+                print('Should not reach here; why is it none?')
+                break
+            self.generatesuccessors(curStateNode)
 
         #loop done; convert best_output states into schedules
         return self.extractschedulesfrombeststates()
@@ -84,6 +114,7 @@ class Schedule_Optimizer:
         self.generatesuccessorsfromlistofactions(statenode=statenode, actions=self.actionable_transforms)
         self.generatesuccessorsfromlistofactions(statenode=statenode, actions=self.actionable_transfers)
 
+    #TODO: IMPLEMENT WITH UPDATED FRONTIERS AND INSERT (tryInsertStateToFrontiers) FUNCTIONS; SHOULD BE STRAIGHTFORWARD
     def generatesuccessorsfromlistofactions(self, statenode: state.StateNode, actions: list[actions.Action]):
         for action in actions:
             scalar = 1
