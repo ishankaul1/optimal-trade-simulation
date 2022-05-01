@@ -1,0 +1,325 @@
+OPTIMIZATION OUTPUT
+-----------------
+
+Init State: {'X1': {'AvailableLand': 2, 'Water': 300, 'Population': 25, 'PopulationWaste': 30, 'MetallicElements': 50, 'Timber': 75, 'Farm': 60, 'FarmWaste': 70, 'MetallicAlloys': 45, 'MetallicAlloysWaste': 45, 'Electronics': 200, 'ElectronicsWaste': 95, 'Housing': 60, 'HousingWaste': 65, 'Food': 77, 'FoodWaste': 50, 'PotentialFossilEnergy': 1000, 'PotentialFossilEnergyUsable': 100, 'PotentialFossilEnergyUsableWaste': 100, 'PotentialRenewableEnergy': 1000, 'PotentialRenewableEnergyUsable': 300, 'PotentialRenewableEnergyUsableWaste': 200}, 'X2': {'AvailableLand': 100, 'Water': 100, 'Population': 20, 'PopulationWaste': 0, 'MetallicElements': 100, 'Timber': 100, 'Farm': 100, 'FarmWaste': 0, 'MetallicAlloys': 100, 'MetallicAlloysWaste': 0, 'Electronics': 100, 'ElectronicsWaste': 0, 'Housing': 100, 'HousingWaste': 0, 'Food': 100, 'FoodWaste': 0, 'PotentialFossilEnergy': 100, 'PotentialFossilEnergyUsable': 100, 'PotentialFossilEnergyUsableWaste': 10, 'PotentialRenewableEnergy': 100, 'PotentialRenewableEnergyUsable': 100, 'PotentialRenewableEnergyUsableWaste': 10}, 'X3': {'AvailableLand': 120, 'Water': 10, 'Population': 30, 'PopulationWaste': 10, 'MetallicElements': 50, 'Timber': 50, 'Farm': 200, 'FarmWaste': 100, 'MetallicAlloys': 100, 'MetallicAlloysWaste': 50, 'Electronics': 40, 'ElectronicsWaste': 20, 'Housing': 30, 'HousingWaste': 10, 'Food': 40, 'FoodWaste': 10, 'PotentialFossilEnergy': 10, 'PotentialFossilEnergyUsable': 10, 'PotentialFossilEnergyUsableWaste': 10, 'PotentialRenewableEnergy': 10, 'PotentialRenewableEnergyUsable': 10, 'PotentialRenewableEnergyUsableWaste': 10}}
+My Country: X1
+Parameters: (Frontier size: 50, Maximum depth 5, Output size: 15, Depth penalty(gamma): 0.99, Sigmoid parameter(k): 1.0, Cost of failure(c): -1)
+
+Optimization Runtime (seconds): 81.309463
+
+Output Schedules:
+SCHEDULE
+---------
+	Final EU: 87.82645145287609
+	Actions:
+		TRANSFER:
+			Country1: X1, Resource1: Water, Amount1: 21
+			Country2: X3, Resource2: AvailableLand, Amount2: 56
+			Statistics: (Reward: 80.96979823052042, Likelihood: 0.8055676015078801, Exp_Utility: 65.0322137566452
+		TRANSFER:
+			Country1: X1, Resource1: Water, Amount1: 200.0
+			Country2: X3, Resource2: PotentialRenewableEnergyUsableWaste, Amount2: -200.0
+			Statistics: (Reward: 94.40363341849472, Likelihood: 0.805121566435902, Exp_Utility: 75.81152278157504
+		TRANSFORM:
+			Country: X1
+			Input: [Population: 20,MetallicElements: 4,Timber: 20,MetallicAlloys: 12]
+			Output: [Housing: 4,HousingWaste: 4,Population: 20]
+			Statistics: (Reward: 107.57172015686113, Likelihood: 0.805121566435902, Exp_Utility: 86.41343340333243
+		TRANSFER:
+			Country1: X1, Resource1: Food, Amount1: 15.0
+			Country2: X3, Resource2: MetallicAlloysWaste, Amount2: -30.0
+			Statistics: (Reward: 111.45778004791224, Likelihood: 0.7898648845373961, Exp_Utility: 87.82645145287609
+SCHEDULE
+---------
+	Final EU: 87.82331916164881
+	Actions:
+		TRANSFER:
+			Country1: X1, Resource1: Water, Amount1: 21
+			Country2: X3, Resource2: AvailableLand, Amount2: 56
+			Statistics: (Reward: 80.96979823052042, Likelihood: 0.8055676015078801, Exp_Utility: 65.0322137566452
+		TRANSFER:
+			Country1: X1, Resource1: Water, Amount1: 200.0
+			Country2: X3, Resource2: PotentialRenewableEnergyUsableWaste, Amount2: -200.0
+			Statistics: (Reward: 94.40363341849472, Likelihood: 0.805121566435902, Exp_Utility: 75.81152278157504
+		TRANSFORM:
+			Country: X1
+			Input: [Population: 20,MetallicElements: 4,Timber: 20,MetallicAlloys: 12]
+			Output: [Housing: 4,HousingWaste: 4,Population: 20]
+			Statistics: (Reward: 107.57172015686113, Likelihood: 0.805121566435902, Exp_Utility: 86.41343340333243
+		TRANSFER:
+			Country1: X1, Resource1: Food, Amount1: 14.0
+			Country2: X3, Resource2: MetallicAlloysWaste, Amount2: -28.0
+			Statistics: (Reward: 111.142770513286, Likelihood: 0.7920556871842717, Exp_Utility: 87.82331916164881
+SCHEDULE
+---------
+	Final EU: 87.7817295129922
+	Actions:
+		TRANSFER:
+			Country1: X1, Resource1: Water, Amount1: 21
+			Country2: X3, Resource2: AvailableLand, Amount2: 56
+			Statistics: (Reward: 80.96979823052042, Likelihood: 0.8055676015078801, Exp_Utility: 65.0322137566452
+		TRANSFER:
+			Country1: X1, Resource1: Water, Amount1: 200.0
+			Country2: X3, Resource2: PotentialRenewableEnergyUsableWaste, Amount2: -200.0
+			Statistics: (Reward: 94.40363341849472, Likelihood: 0.805121566435902, Exp_Utility: 75.81152278157504
+		TRANSFORM:
+			Country: X1
+			Input: [Population: 20,MetallicElements: 4,Timber: 20,MetallicAlloys: 12]
+			Output: [Housing: 4,HousingWaste: 4,Population: 20]
+			Statistics: (Reward: 107.57172015686113, Likelihood: 0.805121566435902, Exp_Utility: 86.41343340333243
+		TRANSFER:
+			Country1: X1, Resource1: Food, Amount1: 16.0
+			Country2: X3, Resource2: MetallicAlloysWaste, Amount2: -32.0
+			Statistics: (Reward: 111.77096963265075, Likelihood: 0.7872746842755451, Exp_Utility: 87.7817295129922
+SCHEDULE
+---------
+	Final EU: 87.77976265112285
+	Actions:
+		TRANSFER:
+			Country1: X1, Resource1: Water, Amount1: 21
+			Country2: X3, Resource2: AvailableLand, Amount2: 56
+			Statistics: (Reward: 80.96979823052042, Likelihood: 0.8055676015078801, Exp_Utility: 65.0322137566452
+		TRANSFER:
+			Country1: X1, Resource1: Water, Amount1: 200.0
+			Country2: X3, Resource2: PotentialRenewableEnergyUsableWaste, Amount2: -200.0
+			Statistics: (Reward: 94.40363341849472, Likelihood: 0.805121566435902, Exp_Utility: 75.81152278157504
+		TRANSFORM:
+			Country: X1
+			Input: [Population: 20,MetallicElements: 4,Timber: 20,MetallicAlloys: 12]
+			Output: [Housing: 4,HousingWaste: 4,Population: 20]
+			Statistics: (Reward: 107.57172015686113, Likelihood: 0.805121566435902, Exp_Utility: 86.41343340333243
+		TRANSFER:
+			Country1: X1, Resource1: Food, Amount1: 13.0
+			Country2: X3, Resource2: MetallicAlloysWaste, Amount2: -26.0
+			Statistics: (Reward: 110.82599835363995, Likelihood: 0.7939098595870757, Exp_Utility: 87.77976265112285
+SCHEDULE
+---------
+	Final EU: 87.7020458635162
+	Actions:
+		TRANSFER:
+			Country1: X1, Resource1: Water, Amount1: 21
+			Country2: X3, Resource2: AvailableLand, Amount2: 56
+			Statistics: (Reward: 80.96979823052042, Likelihood: 0.8055676015078801, Exp_Utility: 65.0322137566452
+		TRANSFER:
+			Country1: X1, Resource1: Water, Amount1: 200.0
+			Country2: X3, Resource2: PotentialRenewableEnergyUsableWaste, Amount2: -200.0
+			Statistics: (Reward: 94.40363341849472, Likelihood: 0.805121566435902, Exp_Utility: 75.81152278157504
+		TRANSFORM:
+			Country: X1
+			Input: [Population: 20,MetallicElements: 4,Timber: 20,MetallicAlloys: 12]
+			Output: [Housing: 4,HousingWaste: 4,Population: 20]
+			Statistics: (Reward: 107.57172015686113, Likelihood: 0.805121566435902, Exp_Utility: 86.41343340333243
+		TRANSFER:
+			Country1: X1, Resource1: Food, Amount1: 12.0
+			Country2: X3, Resource2: MetallicAlloysWaste, Amount2: -24.0
+			Statistics: (Reward: 110.50751822735039, Likelihood: 0.7954804059279968, Exp_Utility: 87.7020458635162
+SCHEDULE
+---------
+	Final EU: 87.68036264998359
+	Actions:
+		TRANSFER:
+			Country1: X1, Resource1: Water, Amount1: 21
+			Country2: X3, Resource2: AvailableLand, Amount2: 56
+			Statistics: (Reward: 80.96979823052042, Likelihood: 0.8055676015078801, Exp_Utility: 65.0322137566452
+		TRANSFER:
+			Country1: X1, Resource1: Water, Amount1: 200.0
+			Country2: X3, Resource2: PotentialRenewableEnergyUsableWaste, Amount2: -200.0
+			Statistics: (Reward: 94.40363341849472, Likelihood: 0.805121566435902, Exp_Utility: 75.81152278157504
+		TRANSFORM:
+			Country: X1
+			Input: [Population: 20,MetallicElements: 4,Timber: 20,MetallicAlloys: 12]
+			Output: [Housing: 4,HousingWaste: 4,Population: 20]
+			Statistics: (Reward: 107.57172015686113, Likelihood: 0.805121566435902, Exp_Utility: 86.41343340333243
+		TRANSFER:
+			Country1: X1, Resource1: Food, Amount1: 17.0
+			Country2: X3, Resource2: MetallicAlloysWaste, Amount2: -34.0
+			Statistics: (Reward: 112.08227909982551, Likelihood: 0.7842109599833882, Exp_Utility: 87.68036264998359
+SCHEDULE
+---------
+	Final EU: 87.66834176004917
+	Actions:
+		TRANSFER:
+			Country1: X1, Resource1: Water, Amount1: 21
+			Country2: X3, Resource2: AvailableLand, Amount2: 56
+			Statistics: (Reward: 80.96979823052042, Likelihood: 0.8055676015078801, Exp_Utility: 65.0322137566452
+		TRANSFER:
+			Country1: X1, Resource1: Water, Amount1: 200.0
+			Country2: X3, Resource2: PotentialRenewableEnergyUsableWaste, Amount2: -200.0
+			Statistics: (Reward: 94.40363341849472, Likelihood: 0.805121566435902, Exp_Utility: 75.81152278157504
+		TRANSFORM:
+			Country: X1
+			Input: [Population: 20,MetallicElements: 4,Timber: 20,MetallicAlloys: 12]
+			Output: [Housing: 4,HousingWaste: 4,Population: 20]
+			Statistics: (Reward: 107.57172015686113, Likelihood: 0.805121566435902, Exp_Utility: 86.41343340333243
+		TRANSFER:
+			Country1: X1, Resource1: Housing, Amount1: 15.0
+			Country2: X3, Resource2: AvailableLand, Amount2: 12.0
+			Statistics: (Reward: 109.98482022817932, Likelihood: 0.7989231462262265, Exp_Utility: 87.66834176004917
+SCHEDULE
+---------
+	Final EU: 87.63495679328909
+	Actions:
+		TRANSFER:
+			Country1: X1, Resource1: Water, Amount1: 21
+			Country2: X3, Resource2: AvailableLand, Amount2: 56
+			Statistics: (Reward: 80.96979823052042, Likelihood: 0.8055676015078801, Exp_Utility: 65.0322137566452
+		TRANSFER:
+			Country1: X1, Resource1: Water, Amount1: 200.0
+			Country2: X3, Resource2: PotentialRenewableEnergyUsableWaste, Amount2: -200.0
+			Statistics: (Reward: 94.40363341849472, Likelihood: 0.805121566435902, Exp_Utility: 75.81152278157504
+		TRANSFORM:
+			Country: X1
+			Input: [Population: 20,MetallicElements: 4,Timber: 20,MetallicAlloys: 12]
+			Output: [Housing: 4,HousingWaste: 4,Population: 20]
+			Statistics: (Reward: 107.57172015686113, Likelihood: 0.805121566435902, Exp_Utility: 86.41343340333243
+		TRANSFER:
+			Country1: X1, Resource1: Food, Amount1: 39
+			Country2: X3, Resource2: PotentialFossilEnergyUsableWaste, Amount2: -65
+			Statistics: (Reward: 109.5581568695721, Likelihood: 0.8017043635943905, Exp_Utility: 87.63495679328909
+SCHEDULE
+---------
+	Final EU: 87.62058744138129
+	Actions:
+		TRANSFER:
+			Country1: X1, Resource1: Water, Amount1: 21
+			Country2: X3, Resource2: AvailableLand, Amount2: 56
+			Statistics: (Reward: 80.96979823052042, Likelihood: 0.8055676015078801, Exp_Utility: 65.0322137566452
+		TRANSFER:
+			Country1: X1, Resource1: Water, Amount1: 200.0
+			Country2: X3, Resource2: PotentialRenewableEnergyUsableWaste, Amount2: -200.0
+			Statistics: (Reward: 94.40363341849472, Likelihood: 0.805121566435902, Exp_Utility: 75.81152278157504
+		TRANSFORM:
+			Country: X1
+			Input: [Population: 20,MetallicElements: 4,Timber: 20,MetallicAlloys: 12]
+			Output: [Housing: 4,HousingWaste: 4,Population: 20]
+			Statistics: (Reward: 107.57172015686113, Likelihood: 0.805121566435902, Exp_Utility: 86.41343340333243
+		TRANSFER:
+			Country1: X1, Resource1: Food, Amount1: 36
+			Country2: X3, Resource2: PotentialFossilEnergyUsableWaste, Amount2: -60
+			Statistics: (Reward: 109.47977433953028, Likelihood: 0.8021430888248325, Exp_Utility: 87.62058744138129
+SCHEDULE
+---------
+	Final EU: 87.60272586440217
+	Actions:
+		TRANSFER:
+			Country1: X1, Resource1: Water, Amount1: 21
+			Country2: X3, Resource2: AvailableLand, Amount2: 56
+			Statistics: (Reward: 80.96979823052042, Likelihood: 0.8055676015078801, Exp_Utility: 65.0322137566452
+		TRANSFER:
+			Country1: X1, Resource1: Water, Amount1: 200.0
+			Country2: X3, Resource2: PotentialRenewableEnergyUsableWaste, Amount2: -200.0
+			Statistics: (Reward: 94.40363341849472, Likelihood: 0.805121566435902, Exp_Utility: 75.81152278157504
+		TRANSFORM:
+			Country: X1
+			Input: [Population: 20,MetallicElements: 4,Timber: 20,MetallicAlloys: 12]
+			Output: [Housing: 4,HousingWaste: 4,Population: 20]
+			Statistics: (Reward: 107.57172015686113, Likelihood: 0.805121566435902, Exp_Utility: 86.41343340333243
+		TRANSFER:
+			Country1: X1, Resource1: Food, Amount1: 42
+			Country2: X3, Resource2: PotentialFossilEnergyUsableWaste, Amount2: -70
+			Statistics: (Reward: 109.59280546334435, Likelihood: 0.8011617527305542, Exp_Utility: 87.60272586440217
+SCHEDULE
+---------
+	Final EU: 87.59543982431435
+	Actions:
+		TRANSFER:
+			Country1: X1, Resource1: Water, Amount1: 21
+			Country2: X3, Resource2: AvailableLand, Amount2: 56
+			Statistics: (Reward: 80.96979823052042, Likelihood: 0.8055676015078801, Exp_Utility: 65.0322137566452
+		TRANSFER:
+			Country1: X1, Resource1: Water, Amount1: 200.0
+			Country2: X3, Resource2: PotentialRenewableEnergyUsableWaste, Amount2: -200.0
+			Statistics: (Reward: 94.40363341849472, Likelihood: 0.805121566435902, Exp_Utility: 75.81152278157504
+		TRANSFORM:
+			Country: X1
+			Input: [Population: 20,MetallicElements: 4,Timber: 20,MetallicAlloys: 12]
+			Output: [Housing: 4,HousingWaste: 4,Population: 20]
+			Statistics: (Reward: 107.57172015686113, Likelihood: 0.805121566435902, Exp_Utility: 86.41343340333243
+		TRANSFER:
+			Country1: X1, Resource1: Food, Amount1: 11.0
+			Country2: X3, Resource2: MetallicAlloysWaste, Amount2: -22.0
+			Statistics: (Reward: 110.18738228915727, Likelihood: 0.7968119943134409, Exp_Utility: 87.59543982431435
+SCHEDULE
+---------
+	Final EU: 87.5666830295284
+	Actions:
+		TRANSFER:
+			Country1: X1, Resource1: Water, Amount1: 21
+			Country2: X3, Resource2: AvailableLand, Amount2: 56
+			Statistics: (Reward: 80.96979823052042, Likelihood: 0.8055676015078801, Exp_Utility: 65.0322137566452
+		TRANSFER:
+			Country1: X1, Resource1: Water, Amount1: 200.0
+			Country2: X3, Resource2: PotentialRenewableEnergyUsableWaste, Amount2: -200.0
+			Statistics: (Reward: 94.40363341849472, Likelihood: 0.805121566435902, Exp_Utility: 75.81152278157504
+		TRANSFORM:
+			Country: X1
+			Input: [Population: 20,MetallicElements: 4,Timber: 20,MetallicAlloys: 12]
+			Output: [Housing: 4,HousingWaste: 4,Population: 20]
+			Statistics: (Reward: 107.57172015686113, Likelihood: 0.805121566435902, Exp_Utility: 86.41343340333243
+		TRANSFER:
+			Country1: X1, Resource1: Food, Amount1: 33
+			Country2: X3, Resource2: PotentialFossilEnergyUsableWaste, Amount2: -55
+			Statistics: (Reward: 109.3638403944112, Likelihood: 0.8024972918033161, Exp_Utility: 87.5666830295284
+SCHEDULE
+---------
+	Final EU: 87.51493953556022
+	Actions:
+		TRANSFER:
+			Country1: X1, Resource1: Water, Amount1: 21
+			Country2: X3, Resource2: AvailableLand, Amount2: 56
+			Statistics: (Reward: 80.96979823052042, Likelihood: 0.8055676015078801, Exp_Utility: 65.0322137566452
+		TRANSFER:
+			Country1: X1, Resource1: Water, Amount1: 200.0
+			Country2: X3, Resource2: PotentialRenewableEnergyUsableWaste, Amount2: -200.0
+			Statistics: (Reward: 94.40363341849472, Likelihood: 0.805121566435902, Exp_Utility: 75.81152278157504
+		TRANSFORM:
+			Country: X1
+			Input: [Population: 20,MetallicElements: 4,Timber: 20,MetallicAlloys: 12]
+			Output: [Housing: 4,HousingWaste: 4,Population: 20]
+			Statistics: (Reward: 107.57172015686113, Likelihood: 0.805121566435902, Exp_Utility: 86.41343340333243
+		TRANSFER:
+			Country1: X1, Resource1: Food, Amount1: 45
+			Country2: X3, Resource2: PotentialFossilEnergyUsableWaste, Amount2: -75
+			Statistics: (Reward: 109.57587267124322, Likelihood: 0.8004905355685223, Exp_Utility: 87.51493953556022
+SCHEDULE
+---------
+	Final EU: 87.51198542063773
+	Actions:
+		TRANSFER:
+			Country1: X1, Resource1: Water, Amount1: 21
+			Country2: X3, Resource2: AvailableLand, Amount2: 56
+			Statistics: (Reward: 80.96979823052042, Likelihood: 0.8055676015078801, Exp_Utility: 65.0322137566452
+		TRANSFER:
+			Country1: X1, Resource1: Water, Amount1: 200.0
+			Country2: X3, Resource2: PotentialRenewableEnergyUsableWaste, Amount2: -200.0
+			Statistics: (Reward: 94.40363341849472, Likelihood: 0.805121566435902, Exp_Utility: 75.81152278157504
+		TRANSFORM:
+			Country: X1
+			Input: [Population: 20,MetallicElements: 4,Timber: 20,MetallicAlloys: 12]
+			Output: [Housing: 4,HousingWaste: 4,Population: 20]
+			Statistics: (Reward: 107.57172015686113, Likelihood: 0.805121566435902, Exp_Utility: 86.41343340333243
+		TRANSFER:
+			Country1: X1, Resource1: Food, Amount1: 18.0
+			Country2: X3, Resource2: MetallicAlloysWaste, Amount2: -36.0
+			Statistics: (Reward: 112.39164524781735, Likelihood: 0.7805864817217781, Exp_Utility: 87.51198542063773
+SCHEDULE
+---------
+	Final EU: 87.47887735858151
+	Actions:
+		TRANSFER:
+			Country1: X1, Resource1: Water, Amount1: 21
+			Country2: X3, Resource2: AvailableLand, Amount2: 56
+			Statistics: (Reward: 80.96979823052042, Likelihood: 0.8055676015078801, Exp_Utility: 65.0322137566452
+		TRANSFER:
+			Country1: X1, Resource1: Water, Amount1: 200.0
+			Country2: X3, Resource2: PotentialRenewableEnergyUsableWaste, Amount2: -200.0
+			Statistics: (Reward: 94.40363341849472, Likelihood: 0.805121566435902, Exp_Utility: 75.81152278157504
+		TRANSFORM:
+			Country: X1
+			Input: [Population: 20,MetallicElements: 4,Timber: 20,MetallicAlloys: 12]
+			Output: [Housing: 4,HousingWaste: 4,Population: 20]
+			Statistics: (Reward: 107.57172015686113, Likelihood: 0.805121566435902, Exp_Utility: 86.41343340333243
+		TRANSFER:
+			Country1: X1, Resource1: Food, Amount1: 30
+			Country2: X3, Resource2: PotentialFossilEnergyUsableWaste, Amount2: -50
+			Statistics: (Reward: 109.21531265685567, Likelihood: 0.8027820747018305, Exp_Utility: 87.47887735858151
