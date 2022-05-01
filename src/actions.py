@@ -19,7 +19,7 @@ class TransferTemplate:
 #outputs all possible transfer combinations given a dict of resource weights,
 def build_transfertemplates_from_resourceweights(resourceweights: dict):
     all_transfertemplates = []
-    resoucelist = list(resourceweights.keys())
+    resoucelist = list(set(resourceweights.keys()) - set(['Population'])) #don't allow population to be traded
     for i in range(len(resoucelist)):
         for j in range(i+1, len(resoucelist)):
             resource1 = resoucelist[i]

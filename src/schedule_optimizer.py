@@ -60,8 +60,6 @@ class Schedule_Optimizer:
             return self.best_frontier.popfirst()[0]
         elif self.isBestFrontierEmpty():
             return self.randomized_frontier.pop()
-        print('Pop:')
-        print('Randomized Size: ' + str(len(self.randomized_frontier)) + ', Best size: ' + str(len(self.best_frontier)))
         rint = random.randint(1, RECIPROCAL_OF_BESTFRONTIER_SIZE_RATIO)
         if rint == 1:
             return self.best_frontier.popfirst()[0]
@@ -114,7 +112,6 @@ class Schedule_Optimizer:
             #if we insert into best states, should not hard-delete the node
             canBeDeleted = not self.tryInsertToBestStates(newState)
             self.generatesuccessors(newState, canBeDeleted)
-
         #loop done; convert best_output states into schedules
         return self.extractschedulesfrombeststates()
 
