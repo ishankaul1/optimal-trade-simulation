@@ -1,6 +1,9 @@
-# cs5260-p2
+# optimal-trade-simulation
 
-This readme holds all the 'logistical' information about where submission materials are located for the Part 2 assignment.
+Simulates a world with several different actors competing for resources, with configurable amounts of available resources.
+Then, runs a state space search over possible actions, attempting to find an optimal path.
+
+I ran several tests to figure out what configuration worked best; TLDR is that a best space frontier combined with random walk worked pretty well.
 
 ## Source Code
 All of the source code is located in the 'src/' directory. The top-level function is schedule_driver.py, which takes in all required input filename and parameters, runs the schedule optimizer, and writes to output files.
